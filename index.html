@@ -4,8 +4,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Semitro - Electronic Products</title>
+  <title>Semitro - Anyone can buy and sell DC electricity. </title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+        font-family: Arial, sans-serif;
+    }
+    table {
+        width: 60%;
+        margin: 20px auto;
+        border-collapse: collapse;
+    }
+    th, td {
+        padding: 10px;
+        border: 1px solid #ddd;
+        text-align: center;
+    }
+    input {
+        width: 100px;
+    }
+</style>
 </head>
 
 <body>
@@ -13,55 +31,149 @@
 
     <!-- <h1>Semitro</h1>  -->
 
-    <img src="Logo sort.png" alt="Electronic Productss" style="vertical-align:bottom" >
-    
-    <h2>Electronic Products</h2>
+    <img src="Logo sort.png" alt="Electronic Repair Services" width=100%; height: auto;>
+    <h2>Anyone can buy and sell DC electricity.</h2>
+    <hr>
+    <h1>Welcome to Semitro</h1>
+    <h1> Our Website is <b style="color: red;"> under-construction </b> </h1>
+    <hr>
+    <H1>DC Power Calculator</H1>
+    <table>
+      <thead>
+          <tr>
+              <th>Market Participant</th>
+              <th>Buyer</th>
+              <th>Seller</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr>
+              <td>Types of current</td>
+              <td>Direct Current (DC)</td>
+              <td>Direct Current (DC)</td>
+          </tr>
+          <tr>
+              <td>Power price:</td>
+              <td>₹5 / kWh</td>
+              <td>₹2.5 / kWh</td>
+          </tr>
+          <tr>
+              <td>Payment options</td>
+              <td>Prepaid (paid for in advance)</td>
+              <td>Postpaid (Power purchase agreement)</td>
+          </tr>
+          <tr>
+              <td>Pricing :</td>
+              <td>Buyer Calculator</td>
+              <td>Seller Calculator</td>
+          </tr>
+          <tr>
+              <td>Voltage (V)</td>
+              <td><input type="number" id="voltageBuyer" value="500" min="1" max="1000" onchange="calculateBuyer()"></td>
+              <td><input type="number" id="voltageSeller" value="500" min="1" max="1000" onchange="calculateSeller()"></td>
+          </tr>
+          <tr>
+              <td>Ampere (A)</td>
+              <td><input type="number" id="ampereBuyer" value="20" min="1" max="1000" onchange="calculateBuyer()"></td>
+              <td><input type="number" id="ampereSeller" value="20" min="1" max="1000" onchange="calculateSeller()"></td>
+          </tr>
+          <tr>
+              <td>Watts (W)</td>
+              <td><input type="text" id="wattsBuyer" value="10000" readonly></td>
+              <td><input type="text" id="wattsSeller" value="10000" readonly></td>
+          </tr>
+          <tr>
+              <td>Kilowatt-hour (kWh)</td>
+              <td><input type="text" id="kWhBuyer" value="10" readonly></td>
+              <td><input type="text" id="kWhSeller" value="10" readonly></td>
+          </tr>
+          <tr>
+              <td>Megawatt-hour (MWh)</td>
+              <td><input type="text" id="MWhBuyer" value="0.01" readonly></td>
+              <td><input type="text" id="MWhSeller" value="0.01" readonly></td>
+          </tr>
+          <tr>
+              <td>Amount: ₹</td>
+              <td><input type="text" id="amountBuyer" value="50" readonly></td>
+              <td><input type="text" id="amountSeller" value="25" readonly></td>
+          </tr>
+      </tbody>
+  </table>
+
+  <script>
+      function calculateBuyer() {
+          let voltage = document.getElementById('voltageBuyer').value;
+          let ampere = document.getElementById('ampereBuyer').value;
+          let watts = voltage * ampere;
+          let kWh = watts / 1000; // assuming 1 hour
+          let MWh = kWh / 1000;
+          let amount = kWh * 5; // Price for Buyer ₹5/kWh
+
+          document.getElementById('wattsBuyer').value = watts;
+          document.getElementById('kWhBuyer').value = kWh;
+          document.getElementById('MWhBuyer').value = MWh;
+          document.getElementById('amountBuyer').value = amount.toFixed(2);
+      }
+
+      function calculateSeller() {
+          let voltage = document.getElementById('voltageSeller').value;
+          let ampere = document.getElementById('ampereSeller').value;
+          let watts = voltage * ampere;
+          let kWh = watts / 1000; // assuming 1 hour
+          let MWh = kWh / 1000;
+          let amount = kWh * 2.5; // Price for Seller ₹2.5/kWh
+
+          document.getElementById('wattsSeller').value = watts;
+          document.getElementById('kWhSeller').value = kWh;
+          document.getElementById('MWhSeller').value = MWh;
+          document.getElementById('amountSeller').value = amount.toFixed(2);
+      }
+
+      // Initial calculation
+      calculateBuyer();
+      calculateSeller();
+  </script>
+<h4 style="color: red;">Note</h4>
+<P>Input in :  Voltage (V) and Hit Enter</P>
+<P>Input in :  Ampere (A) and Hit Enter</P>
+    <Hr>
+
 
   </header>
-<hr>
-  <nav>
+  <!--   <nav>
     <ul>
       <li><a href="#services">Services</a></li>
       <li><a href="#about">About Us</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
-  </nav>
-<hr>
+  </nav> -->
+
   <main>
     <section id="services">
-      <h2>Our Services</h2>
-      <p>We offer a wide range of repair services for all your electronic devices.</p>
-      <ul>
-        <li>Computer and Laptop Repair</li>
-        <li>Smartphone and Tablet Repair</li>
-        <li>Game Console Repair</li>
-        <li>TV Repair</li>
-        <li>Data Recovery Services</li>
-        <li>And More!</li>
-      </ul>
-      <p>Don't see your device listed? Contact us to inquire!</p>
+      <h2 style="color: rgb(83, 21, 215)" ;> Our Services</h2>
+
+      <h3>Subscription of DC Electricity</h3>
+      <h6>Any one Subscribe(Buy) DC Electricity from Semitro</h6>
+
+      <h3>Seller of DC Electricity</h3>
+      <h6>Any one Sell DC Electricity from Semitro</h6>
+
     </section>
 
     <section id="about">
       <h2>About Semitro</h2>
-      <p>We are a team of experienced and passionate electronics repair technicians dedicated to providing our customers
-        with fast, reliable, and affordable repairs.
-        We use high-quality parts and the latest technology to ensure your devices are back up and running in no time.
-      </p>
-      <p>We understand how important your electronic devices are to you, and we treat them with the utmost care.
-        We offer a free diagnostic service to determine the problem with your device and provide you with a quote before
-        we begin any repairs.</p>
+      <p>Anyone can buy and sell DC electricity.</p>
     </section>
-<hr>
+
     <section id="contact">
       <h2>Contact Us</h2>
-      <p>Get in touch with us today to learn more about our services or to schedule a repair.</p>
+      <p>Get in touch with us today to learn more about our services </p>
       <ul>
-        <li>Phone: (+91) 9161525455</li>
+        <li>Phone: (+0) 00000-00000 </li>
         <li>Email: semitro.contact@gmail.com</li>
-        <li>Address: Korba</li>
+        <li>Address: NON </li>
       </ul>
-      
+
     </section>
   </main>
 
